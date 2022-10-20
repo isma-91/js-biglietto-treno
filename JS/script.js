@@ -20,16 +20,28 @@ Km = parseInt(Km);
 let eta = prompt("Quanti anni hai?");
 eta = parseInt(eta);
 
-const totalPriceKm = priceKm * Km;
+let totalPriceKm = priceKm * Km;
+totalPriceKm = totalPriceKm.toLocaleString("en-US", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+let totalPriceMin = totalPriceKm - totalPriceKm * 0.2;
+totalPriceMin = totalPriceMin.toLocaleString("en-US", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+let totalPriceOver = totalPriceKm - totalPriceKm * 0.4;
+totalPriceOver = totalPriceOver.toLocaleString("en-US", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
 
 if (eta < 18) {
-  console.log(
-    `Il costo del tuo biglietto è: ${totalPriceKm - totalPriceKm * 0.2}€`
-  );
+  console.log(`Il costo del tuo biglietto è: ${totalPriceMin}€`);
 } else if (eta > 65) {
-  console.log(
-    `Il costo del tuo biglietto è: ${totalPriceKm - totalPriceKm * 0.4}€`
-  );
+  console.log(`Il costo del tuo biglietto è: ${totalPriceOver}€`);
 } else {
   console.log(`Il costo del tuo biglietto è: ${totalPriceKm}€`);
 }
